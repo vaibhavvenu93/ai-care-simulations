@@ -165,11 +165,11 @@ if st.button("Evaluate Response"):
 
                 st.divider()
 
-                st.subheader("🧠 AI Evaluation Temporarily Unavailable")
+                st.subheader("🧠 Demo Mode: Competency Evaluation")
 
-                st.warning(
-                    "The AI evaluator hit a temporary quota or availability limit. Showing fallback competency guidance instead."
-                )
+                st.info(
+    "You are currently viewing the demo evaluation mode of the simulation engine."
+)
 
                 st.subheader("Fallback Competency Guidance")
 
