@@ -144,17 +144,34 @@ if st.button("Evaluate Response"):
 
     else:
 
-        with st.spinner("AI supervisor evaluating response..."):
+      with st.spinner("AI supervisor evaluating response..."):
 
-            evaluation = evaluate_with_gemini(
-                selected["scenario"],
-                response
-            )
+    try:
+        evaluation = evaluate_with_gemini(
+            selected["scenario"],
+            response
+        )
 
         st.divider()
-
         st.subheader("🧠 AI Evaluation")
-
         st.write(evaluation)
-
         st.success("Simulation Complete")
+
+    except Exception:
+        st.divider()
+        st.subheader("🧠 AI Evaluation Temporarily Unavailable")
+        st.warning("The AI evaluator hit a temporary quota or availability limit. Showing fallback competency guidance instead.")
+
+        st.subheader("Fallback Competency Guidance")
+        st.write("""
+A strong response should include:
+
+1. Empathy and emotional regulation  
+2. Safety or environmental adjustment  
+3. Observation of triggers and behavior patterns  
+4. Reinforcement of positive behavior  
+5. A clear next step  
+6. Documentation for supervision
+""")
+
+        st.success("Fallback Simulation Complete")
